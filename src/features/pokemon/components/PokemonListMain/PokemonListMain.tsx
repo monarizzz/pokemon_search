@@ -1,25 +1,29 @@
-import { GetPokemonListResponse } from "@/infra/poke-api/api/pokemon";
-import { getPokemonList } from "@/infra/poke-api/repositories/pokemon";
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
+import useGetPokemonList from "@/features/hooks/useGetPokemonList";
 
 export const PokemonListPage: FC = () => {
-  const [data, setData] = useState<GetPokemonListResponse>();
+  const { pokemonList, isGetPokemonListFetching, isGetPokemonListError } =
+    useGetPokemonList(0, 20);
 
-  useEffect(() => {
-    getPokemonList({ limit: 0, offset: 0 }).then((result) => setData(result));
-  }, []);
+  if (isGetPokemonListFetching) {
+    return "取得中です";
+  }
 
-  if (!data) {
-    return "値が取れていません";
+  if (isGetPokemonListError) {
+    return "エラーが起きました";
   }
 
   return (
-    <>
-      <div>全部で{data.count}体</div>
-      {data.results.map((result) => (
-        <div key={result.name}>{result.name}</div>
-      ))}
-    </>
+    <div>
+      {pokemonList ? (
+        <>
+          <div>全部で{pokemonList.count}体</div>
+          {pokemonList.results.map((result) => (
+            <div key={result.name}> {result.name}</div>
+          ))}
+        </>
+      ) : null}
+    </div>
   );
 };
 export default PokemonListPage;

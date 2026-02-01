@@ -1,3 +1,9 @@
+import Link from "next/link";
+
 export default function Home() {
-  return <div></div>;
+  return (
+    <>
+      <Link href="pokemons">GO POKEMONS</Link>
+    </>
+  );
 }
