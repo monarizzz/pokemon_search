@@ -1,12 +1,12 @@
 import { GetPokemonListResponse } from "@/infra/poke-api/api/pokemonList";
-import { getPokemonList } from "@/infra/poke-api/repositories/getPokemonList";
+import { getPokemonSpecies } from "@/infra/poke-api/repositories/getPokemonSpecies";
 import { useQuery } from "@tanstack/react-query";
 
-const useGetPokemonList = (offset: number, limit: number) => {
+const useGetPokemonSpecies = (id: number) => {
   const { data, isError, isLoading } = useQuery<GetPokemonListResponse>({
-    queryKey: ["pokemon-list", offset, limit],
+    queryKey: ["pokemon-species", id],
     queryFn: async () => {
-      return await getPokemonList({ offset, limit });
+      return await getPokemonSpecies({ id });
     },
   });
 
@@ -17,4 +17,4 @@ const useGetPokemonList = (offset: number, limit: number) => {
   };
 };
 
-export default useGetPokemonList;
+export default useGetPokemonSpecies;

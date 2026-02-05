@@ -1,9 +1,14 @@
 import { FC } from "react";
 import useGetPokemonList from "@/features/hooks/useGetPokemonList";
 
-export const PokemonListPage: FC = () => {
+type Props = {
+  offset: number;
+  limit: number;
+};
+
+export const PokemonListPage: FC<Props> = ({ offset, limit }) => {
   const { pokemonList, isGetPokemonListFetching, isGetPokemonListError } =
-    useGetPokemonList(0, 20);
+    useGetPokemonList(offset, limit);
 
   if (isGetPokemonListFetching) {
     return "取得中です";
