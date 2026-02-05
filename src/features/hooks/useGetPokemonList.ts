@@ -1,5 +1,5 @@
-import { GetPokemonListResponse } from "@/infra/poke-api/api/pokemon";
-import { getPokemonList } from "@/infra/poke-api/repositories/pokemon";
+import { GetPokemonListResponse } from "@/infra/poke-api/api/pokemonList";
+import { getPokemonList } from "@/infra/poke-api/repositories/getPokemonList";
 import { useQuery } from "@tanstack/react-query";
 
 const useGetPokemonList = (offset: number, limit: number) => {

@@ -1,4 +1,7 @@
-import { GetPokemonListRequest, GetPokemonListResponse } from "../api/pokemon";
+import {
+  GetPokemonListRequest,
+  GetPokemonListResponse,
+} from "../api/pokemonList";
 
 export const getPokemonList = async ({
   offset,
