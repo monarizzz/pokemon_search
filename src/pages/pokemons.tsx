@@ -1,7 +1,7 @@
 import PokemonListMain from "@/features/pokemon/components/PokemonListMain/PokemonListMain";
 import { NextPage } from "next";
 
-const PokemonListPage: NextPage = () => {
+const Pokemons: NextPage = () => {
   return (
     <>
       <PokemonListMain />
@@ -9,4 +9,4 @@ const PokemonListPage: NextPage = () => {
   );
 };
 
-export default PokemonListPage;
+export default Pokemons;
